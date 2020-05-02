@@ -28,7 +28,7 @@ export const queAnsReducer = (state = initialQueAnsState, action) => {
                 ...state,
                 error: true,
                 loading: false,
-                message: "something error"
+                message: action.error
             }
         default: return state
     }
