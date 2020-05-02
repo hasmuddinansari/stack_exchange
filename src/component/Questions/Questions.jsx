@@ -1,7 +1,10 @@
 import React, { useState } from 'react'
 import { FetchQueResponse } from "../../Redux/questions/Action"
 import { connect } from "react-redux"
-function Questions({ FetchQueResponse }) {
+import Loading from "../Common/Loading"
+import QuesList from "./QuesList"
+
+function Questions({ FetchQueResponse, questions }) {
     const [tag, setTag] = useState("")
     function getQuestions() {
         let url = `https://api.stackexchange.com/2.2/questions?pagesize=10&order=desc&sort=creation&tagged=${tag}&site=stackoverflow`
@@ -9,6 +12,9 @@ function Questions({ FetchQueResponse }) {
         //getting questions from api's
         FetchQueResponse(url)
     }
+
+    const { loading, error, data } = questions
+
     return (
         <div className="container">
             <div className="row justify-content-center">
@@ -21,12 +27,12 @@ function Questions({ FetchQueResponse }) {
                     </button>
                 </div>
             </div>
-
+            <hr />
             {/* all_questions */}
 
             <div className='row justify-content-center'>
                 <div className="col-lg-6 col-12">
-
+                    {loading ? <Loading /> : <QuesList questions={data} />}
                 </div>
             </div>
 

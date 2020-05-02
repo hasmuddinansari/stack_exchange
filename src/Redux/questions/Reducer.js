@@ -2,7 +2,7 @@
 //initial questions state 
 const initialQuesState = {
     error: false,
-    data: [],
+    data: null,
     message: "",
     loading: false
 }
@@ -16,7 +16,7 @@ export const questionsReducer = (state = initialQuesState, action) => {
                 error: false,
                 loading: false,
             }
-        case "FETCH_QUES_REQUEST_Q":
+        case "FETCH_QUES_REQUEST":
             return {
                 ...state,
                 data: [],
