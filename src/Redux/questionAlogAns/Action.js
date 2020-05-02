@@ -1,33 +1,33 @@
 import axios from "axios"
 
-export const fetchSuccess = (data) => {
+export const fetchSuccessAns = (data) => {
     return {
         type: "FETCH_SUCCESS",
         payload: data
     }
 }
 
-export const fetchRequest = () => {
+export const fetchRequestAns = () => {
     return {
         type: "FETCH_REQUEST"
     }
 }
-export const fetchFailure = (error) => {
+export const fetchFailureAns = (error) => {
     return {
         type: "FETCH_FAIL",
         error
     }
 }
 
-export const fetchResponse = (url) => {
+export const fetchQueAnsResponse = (url) => {
     return dispatch => {
-        fetchRequest()
-        axios.get(url)
+        dispatch(fetchRequestAns())
+        return axios.get(url)
             .then((res) => {
-                return dispatch(fetchSuccess(res.data))
+                return dispatch(fetchSuccessAns(res.data))
             })
             .catch((err) => {
-                return dispatch(fetchFailure(err))
+                return dispatch(fetchFailureAns(err))
             })
     }
 }

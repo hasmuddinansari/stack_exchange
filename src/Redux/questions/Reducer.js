@@ -9,21 +9,21 @@ const initialQuesState = {
 
 export const questionsReducer = (state = initialQuesState, action) => {
     switch (action.type) {
-        case "FETCH_SUCCESS":
+        case "FETCH_QUES_SUCCESS":
             return {
                 ...state,
                 data: action.payload,
                 error: false,
                 loading: false,
             }
-        case "FETCH_REQUEST":
+        case "FETCH_QUES_REQUEST_Q":
             return {
                 ...state,
                 data: [],
                 error: false,
                 loading: true,
             }
-        case "FETCH_FAIL":
+        case "FETCH_QUES_FAIL":
             return {
                 ...state,
                 error: true,

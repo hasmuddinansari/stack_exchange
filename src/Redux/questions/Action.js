@@ -2,32 +2,32 @@ import axios from "axios"
 
 export const fetchSuccess = (data) => {
     return {
-        type: "FETCH_SUCCESS",
+        type: "FETCH_QUES_SUCCESS",
         payload: data
     }
 }
 
 export const fetchRequest = () => {
     return {
-        type: "FETCH_REQUEST"
+        type: "FETCH_QUES_REQUEST"
     }
 }
 export const fetchFailure = (error) => {
     return {
-        type: "FETCH_FAIL",
+        type: "FETCH_QUES_FAIL",
         error
     }
 }
 
-export const fetchQueResponse = (url) => {
-    return dispatch => {
-        fetchRequest()
-        axios.get(url)
+export const FetchQueResponse = (url) => {
+    return (dispatch) => {
+        dispatch(fetchRequest())
+        return axios.get(url)
             .then((res) => {
-                return dispatch(fetchSuccess(res.data))
+                dispatch(fetchSuccess(res.data.items))
             })
             .catch((err) => {
-                return dispatch(fetchFailure(err))
+                dispatch(fetchFailure(err))
             })
     }
 }
