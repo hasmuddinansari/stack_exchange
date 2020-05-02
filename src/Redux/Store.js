@@ -1,6 +1,14 @@
-import { createStore, applyMiddleware, compose } from "redux"
-import { rootReducer } from "./Reducer"
+import { createStore, applyMiddleware, compose, combineReducers } from "redux"
 import thunk from "redux-thunk"
+import { queAnsReducer } from "./questionAlogAns/Reducer"
+import { questionsReducer } from "./questions/Reducer"
+
+
+const rootReducer = combineReducers({
+    questionsReducer,
+    queAnsReducer
+})
+
 
 
 const store = createStore(rootReducer, compose(applyMiddleware(thunk),
