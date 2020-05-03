@@ -1,11 +1,11 @@
 import React from 'react';
-import Questions from "./component/Questions/Questions"
+import Routes from "./Routes/Routes"
 import './App.css';
 
 function App() {
   return (
     <div className="App">
-      <Questions />
+      <Routes />
     </div>
   );
 }

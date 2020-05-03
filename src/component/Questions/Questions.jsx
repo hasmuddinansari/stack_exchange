@@ -3,6 +3,7 @@ import { FetchQueResponse } from "../../Redux/questions/Action"
 import { connect } from "react-redux"
 import Loading from "../Common/Loading"
 import QuesList from "./QuesList"
+import { Link } from "react-router-dom"
 
 function Questions({ FetchQueResponse, questions }) {
     const [tag, setTag] = useState("")
@@ -17,6 +18,7 @@ function Questions({ FetchQueResponse, questions }) {
 
     return (
         <div className="container">
+            <Link className="btn btn-outline-dark" to="/answer">Question Answer</Link>
             <div className="row justify-content-center">
                 <div className="col-lg-6 col-12">
                     <input placeholder="type any tag Names" className="form-control my-3" type="text" onChange={(e) => setTag(e.target.value)} />

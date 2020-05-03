@@ -2,9 +2,10 @@
 
 const initialQueAnsState = {
     error: false,
-    data: [],
+    data: null,
     message: "",
-    loading: false
+    loading: false,
+    question: "",
 }
 
 export const queAnsReducer = (state = initialQueAnsState, action) => {
@@ -22,14 +23,23 @@ export const queAnsReducer = (state = initialQueAnsState, action) => {
                 data: [],
                 error: false,
                 loading: true,
+                question: "",
             }
         case "FETCH_FAIL":
             return {
                 ...state,
                 error: true,
                 loading: false,
-                message: action.error
+                message: action.error,
+                question: ""
             }
+
+        case "FETCH_QUESTION_SUCCESS":
+            return {
+                ...state,
+                question: action.question
+            }
+
         default: return state
     }
 }

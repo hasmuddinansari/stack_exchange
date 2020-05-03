@@ -10,7 +10,7 @@ import Loading from '../Common/Loading'
 function QuestionsAns({ fetchQueAnsResponse, queAnsReducer, fetchQuestionResponse }) {
     const [qId, setId] = useState(0)
     const [ans, setAns] = useState(null)
-    let { data, loading, question } = queAnsReducer
+    let { data, loading, question, error } = queAnsReducer
 
     function searchByQId() {
         //fetching question
@@ -51,7 +51,7 @@ function QuestionsAns({ fetchQueAnsResponse, queAnsReducer, fetchQuestionRespons
                 </datalist>
                 <button onClick={searchByQId} className="btn btn-success col-lg-3 col-12 my-2">Search</button>
             </div>
-            {loading ? <Loading /> : <Answers ans={ans} question={question} />}
+            {loading ? <Loading /> : <Answers ans={ans} question={question} error={error} />}
         </div>
     )
 }
