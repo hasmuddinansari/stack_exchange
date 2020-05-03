@@ -1,11 +1,17 @@
 import React from 'react'
 import HtmlParsor from '../Common/HtmlParsor'
+
 export default function Answers({ ans, question }) {
+    if (question.length > 0 && typeof ans == "object") {
+        if (ans.length == 0) {
+            return <>
+                <h3 className="text-danger">Question: {question}</h3>
+                <h5>No Answer found !!</h5>
+            </>
+        }
+    }
     if (ans == null) {
         return <></>
-    }
-    if (ans.length == 0) {
-        return <h2>No answer found!</h2>
     }
     return (
         <div className="container">
