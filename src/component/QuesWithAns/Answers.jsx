@@ -1,6 +1,9 @@
 import React from 'react'
 import HtmlParsor from '../Common/HtmlParsor'
 export default function Answers({ ans, question }) {
+    if (ans == null) {
+        return <></>
+    }
     if (ans.length == 0) {
         return <h2>No answer found!</h2>
     }

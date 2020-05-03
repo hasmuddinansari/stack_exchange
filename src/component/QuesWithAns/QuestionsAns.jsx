@@ -4,11 +4,12 @@ import { fetchQueAnsResponse, fetchQuestionResponse } from "../../Redux/question
 import { connect } from "react-redux"
 import { isAcceptedAnsExist } from "./AcceptedAns"
 import Answers from "./Answers"
-
+import { Link } from "react-router-dom"
+import Loading from '../Common/Loading'
 
 function QuestionsAns({ fetchQueAnsResponse, queAnsReducer, fetchQuestionResponse }) {
     const [qId, setId] = useState(0)
-    const [ans, setAns] = useState([])
+    const [ans, setAns] = useState(null)
     let { data, loading, question } = queAnsReducer
 
     function searchByQId() {
@@ -34,6 +35,7 @@ function QuestionsAns({ fetchQueAnsResponse, queAnsReducer, fetchQuestionRespons
 
     return (
         <div className="container">
+            <Link to="/">Questions</Link>
             <h3>Questions with their Answers</h3>
             <div className="row justify-content-center p-3">
                 <input
@@ -49,7 +51,7 @@ function QuestionsAns({ fetchQueAnsResponse, queAnsReducer, fetchQuestionRespons
                 </datalist>
                 <button onClick={searchByQId} className="btn btn-success col-lg-3 col-12 my-2">Search</button>
             </div>
-            <Answers ans={ans} question={question} />
+            {loading ? <Loading /> : <Answers ans={ans} question={question} />}
         </div>
     )
 }
