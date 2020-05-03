@@ -35,7 +35,7 @@ function QuestionsAns({ fetchQueAnsResponse, queAnsReducer, fetchQuestionRespons
 
     return (
         <div className="container">
-            <Link to="/">Questions</Link>
+            <Link className="btn btn-outline-dark" to="/">Questions</Link>
             <h3>Questions with their Answers</h3>
             <div className="row justify-content-center p-3">
                 <input
